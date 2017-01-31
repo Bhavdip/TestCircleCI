@@ -19,6 +19,6 @@ dependencies:
 test:
   override:
   # start the build
-  - ./gradlew assembleRelease
+  - ./gradlew assembleDebug
  # copy the build outputs to artifacts
   - cp -r app/build/outputs/ $CIRCLE_ARTIFACTS
