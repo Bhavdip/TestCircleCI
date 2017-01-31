@@ -9,7 +9,12 @@ machine:
         ANDROID_HOME: /usr/local/android-sdk-linux
 dependencies:
     override:
-        - echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-24.0.2,android-24,extra-google-m2repository,extra-google-google_play_services,extra-android-support
+        # Build Tools 25.0.1
+        - echo y | android update sdk --no-ui --all --filter build-tools-25.0.1,android-25,extra-android-m2repository
+        # Build Tools 24.0.1
+        - echo y | android update sdk --no-ui --all --filter build-tools-24.0.1,android-24,extra-android-m2repository
+        # Build Tools 23.0.1
+        - echo y | android update sdk --no-ui --all --filter build-tools-23.0.1,android-23,extra-android-m2repository
         - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
 test:
   override:
