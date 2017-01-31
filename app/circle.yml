@@ -1,0 +1,23 @@
+#
+# Build configuration for Circle CI
+#
+general:
+    artifacts:
+        - /home/ubuntu/unideal-android/app/build/outputs/apk/
+machine:
+    environment:
+        ANDROID_HOME: /usr/local/android-sdk-linux
+dependencies:
+    override:
+        - echo y | android update sdk --no-ui --filter "android-24,build-tools-25.0.2"
+        - echo y | android update sdk --no-ui --all --filter "platform-tools, tools"
+        - echo y | android update sdk --no-ui --all --filter "android-24, build-tools-25.0.2"
+        - echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
+        - echo y | android update sdk --no-ui --all --filter "extra-android-support"
+        - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
+test:
+  override:
+  # start the build
+  - ./gradlew assembleRelease
+ # copy the build outputs to artifacts
+  - cp -r app/build/outputs/ $CIRCLE_ARTIFACTS
