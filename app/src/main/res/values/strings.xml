@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">TestCircleCI</string>
+  <string name="google_key">AIzaSyB2EI2fBYhbCBnQ3ynystrWF46vo87qUrA</string>
 </resources>
